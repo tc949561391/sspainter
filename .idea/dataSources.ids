@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - sspainter@localhost" uuid="d7a1d0f5-90b0-4071-a8bf-db59b66f31b0">
+    <database-info product="MySQL" version="5.7.9" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.38 ( Revision: fe541c166cec739c74cc727c5da96c1028b4834a )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="sspainter"/>
+      <table id="2" parent="1" name="Artist"/>
+      <table id="3" parent="1" name="DecorateZone"/>
+      <table id="4" parent="1" name="Picture"/>
+      <table id="5" parent="1" name="PictureAlbum"/>
+      <table id="6" parent="1" name="PictureComment"/>
+      <table id="7" parent="1" name="Post"/>
+      <table id="8" parent="1" name="PostComment"/>
+      <table id="9" parent="1" name="RelationShip"/>
+      <table id="10" parent="1" name="SecurityInfo"/>
+      <table id="11" parent="1" name="Style"/>
+      <table id="12" parent="1" name="Tools"/>
+      <table id="13" parent="1" name="Topic"/>
+      <table id="14" parent="1" name="henchman_mapper"/>
+      <table id="15" parent="1" name="manager_mapper"/>
+      <table id="16" parent="1" name="picture_style_mapper"/>
+      <table id="17" parent="1" name="tools_mapper"/>
+      <table id="18" parent="1" name="topic_mapper"/>
+      <column id="19" parent="2" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="20" parent="2" name="Gender">
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="21" parent="2" name="icon">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="22" parent="2" name="loginId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="23" parent="2" name="nick_name">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="24" parent="2" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="25" parent="2" name="topicColor">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="26" parent="2" name="decorateZone_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="27" parent="2" name="FKrha05vqmbvuqc28rki08lqaxo">
+        <columns>decorateZone_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="28" parent="2" name="UK_eu2l43o74tosl4r9xerj3q0ie">
+        <columns>loginId</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="29" parent="2" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <key id="30" parent="2" name="UK_eu2l43o74tosl4r9xerj3q0ie">
+        <columns>loginId</columns>
+        <underlying-index>UK_eu2l43o74tosl4r9xerj3q0ie</underlying-index>
+      </key>
+      <foreign-key id="31" parent="2" name="FKrha05vqmbvuqc28rki08lqaxo">
+        <columns>decorateZone_uuid</columns>
+        <ref-key>~.DecorateZone.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="32" parent="3" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="33" parent="3" name="bgPath">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="34" parent="3" name="phone">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="35" parent="3" name="school">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="36" parent="3" name="selfJudge">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="37" parent="3" name="tags">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="38" parent="3" name="securityInfo_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="39" parent="3" name="FKktq9e7i9eejxvrqd5ov0jgsep">
+        <columns>securityInfo_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="40" parent="3" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="41" parent="3" name="FKktq9e7i9eejxvrqd5ov0jgsep">
+        <columns>securityInfo_uuid</columns>
+        <ref-key>~.SecurityInfo.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="42" parent="4" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="43" parent="4" name="descs">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="44" parent="4" name="path">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="45" parent="4" name="title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="46" parent="4" name="album_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="47" parent="4" name="FKi31j1fyf22bre0p6oupsx7awa">
+        <columns>album_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="48" parent="4" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="49" parent="4" name="FKi31j1fyf22bre0p6oupsx7awa">
+        <columns>album_uuid</columns>
+        <ref-key>~.PictureAlbum.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="50" parent="5" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="51" parent="5" name="createDate">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="52" parent="5" name="author_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="53" parent="5" name="FK6ap21ddj20670wc2r8g0pbhu3">
+        <columns>author_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="54" parent="5" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="55" parent="5" name="FK6ap21ddj20670wc2r8g0pbhu3">
+        <columns>author_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="56" parent="6" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="57" parent="6" name="commentDate">
+        <data-type>date</data-type>
+      </column>
+      <column id="58" parent="6" name="content">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="59" parent="6" name="isRoot">
+        <mandatory>1</mandatory>
+        <data-type>bit(1)</data-type>
+      </column>
+      <column id="60" parent="6" name="album_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="61" parent="6" name="from_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="62" parent="6" name="picture_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="63" parent="6" name="superComment_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="64" parent="6" name="to_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="65" parent="6" name="FK3hh7c2w7axy6dtq3e8955tohc">
+        <columns>to_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="66" parent="6" name="FKbowf645rfssje1llhklb6d9ek">
+        <columns>picture_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="67" parent="6" name="FKdsxppd1k91bjitjn99r3yt2g">
+        <columns>superComment_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="68" parent="6" name="FKny42ktj0nonhq03xrtuns8afg">
+        <columns>album_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="69" parent="6" name="FKp936cl2gxdg4ygcwo8077cpne">
+        <columns>from_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="70" parent="6" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="71" parent="6" name="FK3hh7c2w7axy6dtq3e8955tohc">
+        <columns>to_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="72" parent="6" name="FKbowf645rfssje1llhklb6d9ek">
+        <columns>picture_uuid</columns>
+        <ref-key>~.Picture.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="73" parent="6" name="FKdsxppd1k91bjitjn99r3yt2g">
+        <columns>superComment_uuid</columns>
+        <ref-key>PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="74" parent="6" name="FKny42ktj0nonhq03xrtuns8afg">
+        <columns>album_uuid</columns>
+        <ref-key>~.PictureAlbum.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="75" parent="6" name="FKp936cl2gxdg4ygcwo8077cpne">
+        <columns>from_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="76" parent="7" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="77" parent="7" name="content">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="78" parent="7" name="title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="79" parent="7" name="topic_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="80" parent="7" name="FKprmil8k1o0f60bw6r5pmtvs3n">
+        <columns>topic_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="81" parent="7" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="82" parent="7" name="FKprmil8k1o0f60bw6r5pmtvs3n">
+        <columns>topic_uuid</columns>
+        <ref-key>~.Topic.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="83" parent="8" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="84" parent="8" name="commentDate">
+        <data-type>date</data-type>
+      </column>
+      <column id="85" parent="8" name="content">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="86" parent="8" name="isRoot">
+        <mandatory>1</mandatory>
+        <data-type>bit(1)</data-type>
+      </column>
+      <column id="87" parent="8" name="from_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="88" parent="8" name="post_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="89" parent="8" name="superComment_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="90" parent="8" name="to_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="91" parent="8" name="FK4uu9b0mkde7prdfdy4ejgd9jr">
+        <columns>superComment_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="92" parent="8" name="FK6899hp10i61smxkyxe7efqg6j">
+        <columns>from_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="93" parent="8" name="FK6qx9y87immp2koqc4cafhh7q0">
+        <columns>post_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="94" parent="8" name="FKl161gareeu6uw5pamjxqgcanu">
+        <columns>to_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="95" parent="8" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="96" parent="8" name="FK4uu9b0mkde7prdfdy4ejgd9jr">
+        <columns>superComment_uuid</columns>
+        <ref-key>PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="97" parent="8" name="FK6899hp10i61smxkyxe7efqg6j">
+        <columns>from_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="98" parent="8" name="FK6qx9y87immp2koqc4cafhh7q0">
+        <columns>post_uuid</columns>
+        <ref-key>~.Post.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="99" parent="8" name="FKl161gareeu6uw5pamjxqgcanu">
+        <columns>to_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="100" parent="9" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="101" parent="9" name="groupName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="102" parent="9" name="remark">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="103" parent="9" name="holder_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="104" parent="9" name="related_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="105" parent="9" name="FK3kmxhv454yp1fad2uusn8vf9d">
+        <columns>related_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="106" parent="9" name="FKp7tqjs9h61kdmug382b03k0qe">
+        <columns>holder_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="107" parent="9" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="108" parent="9" name="FK3kmxhv454yp1fad2uusn8vf9d">
+        <columns>related_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="109" parent="9" name="FKp7tqjs9h61kdmug382b03k0qe">
+        <columns>holder_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="110" parent="10" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="111" parent="10" name="address">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="112" parent="10" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="113" parent="10" name="idCardNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="114" parent="10" name="lastIp">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="115" parent="10" name="lastLoginDate">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="116" parent="10" name="phone">
+        <data-type>varchar(11)</data-type>
+      </column>
+      <column id="117" parent="10" name="registerDate">
+        <data-type>date</data-type>
+      </column>
+      <column id="118" parent="10" name="trueName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="119" parent="10" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="120" parent="11" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="121" parent="11" name="isRoot">
+        <mandatory>1</mandatory>
+        <data-type>bit(1)</data-type>
+      </column>
+      <column id="122" parent="11" name="styleName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="123" parent="11" name="parentStyle_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="124" parent="11" name="FK1cngpbwtptg0wf4vj71lfbqbs">
+        <columns>parentStyle_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="125" parent="11" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="126" parent="11" name="FK1cngpbwtptg0wf4vj71lfbqbs">
+        <columns>parentStyle_uuid</columns>
+        <ref-key>PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="127" parent="12" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="128" parent="12" name="introduce">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="129" parent="12" name="officialWebsite">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="130" parent="12" name="toolName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="131" parent="12" name="tooleIconPath">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="132" parent="12" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="133" parent="13" name="uuid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="134" parent="13" name="topcIcon">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="135" parent="13" name="topicIntroduct">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="136" parent="13" name="tupicName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="137" parent="13" name="type">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="138" parent="13" name="creater_uuid">
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="139" parent="13" name="style_uuid">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="140" parent="13" name="FK7g0lb8gr9ur4bfmfa5agmj8y3">
+        <columns>style_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="141" parent="13" name="FKknnfcn7ov6yp8tjqj7o36wwbn">
+        <columns>creater_uuid</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="142" parent="13" name="PRIMARY">
+        <columns>uuid</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="143" parent="13" name="FK7g0lb8gr9ur4bfmfa5agmj8y3">
+        <columns>style_uuid</columns>
+        <ref-key>~.Style.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="144" parent="13" name="FKknnfcn7ov6yp8tjqj7o36wwbn">
+        <columns>creater_uuid</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="145" parent="14" name="holder_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="146" parent="14" name="relater_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="147" parent="14" name="FK7p8w32hb2r174e5q0wbgiejeh">
+        <columns>relater_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="148" parent="14" name="FKepknstyf7nbnkiptij3k4amsa">
+        <columns>holder_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="149" parent="14" name="FK7p8w32hb2r174e5q0wbgiejeh">
+        <columns>relater_id</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="150" parent="14" name="FKepknstyf7nbnkiptij3k4amsa">
+        <columns>holder_id</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="151" parent="15" name="topic_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="152" parent="15" name="artist_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <index id="153" parent="15" name="FK1fxjpf5yuspcc8p27e6lpuv8a">
+        <columns>topic_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="154" parent="15" name="FKmstp8ggp9nn8ifd3528kxvm0f">
+        <columns>artist_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="155" parent="15" name="FK1fxjpf5yuspcc8p27e6lpuv8a">
+        <columns>topic_id</columns>
+        <ref-key>~.Topic.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="156" parent="15" name="FKmstp8ggp9nn8ifd3528kxvm0f">
+        <columns>artist_id</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="157" parent="16" name="style_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="158" parent="16" name="picture_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="159" parent="16" name="FKoluxc06mb5ytpu7fs30w01jg6">
+        <columns>picture_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="160" parent="16" name="PRIMARY">
+        <columns>style_id
+picture_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="161" parent="16" name="FK6u0gnqbw3kakitekv5em2ccgu">
+        <columns>style_id</columns>
+        <ref-key>~.Picture.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="162" parent="16" name="FKoluxc06mb5ytpu7fs30w01jg6">
+        <columns>picture_id</columns>
+        <ref-key>~.Style.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="163" parent="17" name="artist_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="164" parent="17" name="toole_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="165" parent="17" name="FKoe5ttj18hyc2c2idi12wo7ml0">
+        <columns>artist_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="166" parent="17" name="FKpo26oercpgs7o4o519g8he44i">
+        <columns>toole_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="167" parent="17" name="FKoe5ttj18hyc2c2idi12wo7ml0">
+        <columns>artist_id</columns>
+        <ref-key>~.DecorateZone.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="168" parent="17" name="FKpo26oercpgs7o4o519g8he44i">
+        <columns>toole_id</columns>
+        <ref-key>~.Tools.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="169" parent="18" name="artist_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="170" parent="18" name="topic_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="171" parent="18" name="FKscxnw2dkltq3xg3s5iulbuaov">
+        <columns>topic_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="172" parent="18" name="FKtm8ervw9y3ufftqygjeqhr5">
+        <columns>artist_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="173" parent="18" name="FKscxnw2dkltq3xg3s5iulbuaov">
+        <columns>topic_id</columns>
+        <ref-key>~.Topic.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="174" parent="18" name="FKtm8ervw9y3ufftqygjeqhr5">
+        <columns>artist_id</columns>
+        <ref-key>~.Artist.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
