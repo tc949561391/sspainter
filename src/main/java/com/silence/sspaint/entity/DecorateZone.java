@@ -16,6 +16,9 @@ public class DecorateZone {
     @GeneratedValue(generator = "uuid")
     private String uuid;                  //主键id
 
+    @OneToOne
+    private Artist artist;
+
 
     private String bgPath;
 
@@ -39,8 +42,7 @@ public class DecorateZone {
     private String phone;                           //手机号
 
     private String school;                         //学校
-    @OneToOne
-    private SecurityInfo securityInfo;               //安全信息
+
 
 
     public String getUuid() {
@@ -99,11 +101,4 @@ public class DecorateZone {
         this.school = school;
     }
 
-    public SecurityInfo getSecurityInfo() {
-        return securityInfo;
-    }
-
-    public void setSecurityInfo(SecurityInfo securityInfo) {
-        this.securityInfo = securityInfo;
-    }
 }

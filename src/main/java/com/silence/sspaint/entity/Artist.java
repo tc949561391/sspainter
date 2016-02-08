@@ -19,79 +19,32 @@ import java.util.UUID;
 public class Artist {
 
     @Id
-    @GenericGenerator(name="uuid",strategy = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
     @GeneratedValue(generator = "uuid")
-    @Column(length = 32,nullable = false)
+    @Column(length = 32, nullable = false)
     private String uuid;                  //主键id
 
 
-
-    @Column(name = "nick_name", length = 30 )
+    @Column(name = "nick_name", length = 30)
     private String nickName;         //昵称
 
     @Column(length = 5)
     private String Gender;             //性别
 
-    @Column(length = 50, unique = true,nullable = false)
+    @Column(length = 50, unique = true, nullable = false)
     private String loginId;             //登陆的id
 
 
-    @Column(length = 50,nullable = false)
+    @Column(length = 50, nullable = false)
     private String password;               //密码
 
 
+    private String icon;                    //头像的路径
 
-    private String icon;                    //头像的二进制
-
-
-    @OneToMany(cascade = {
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST},
-            fetch = FetchType.LAZY, mappedBy = "author")
-    private Set<PictureAlbum> pictureAlbums;         //该艺术家所有的相册
-
-
-
-
-    @OneToMany(cascade = {
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST},
-            fetch = FetchType.LAZY, mappedBy = "holder")
-    private Set<RelationShip> ConcernedMan;             //他关注的人
-
-
-
-
-
-    @ManyToMany
-    @JoinTable(name = "henchman_mapper",
-            joinColumns = {
-                    @JoinColumn(name = "holder_id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "relater_id")
-            }
-    )
-    private List<Artist> henchman;               //关注他的人
-
-
-
-    @ManyToMany
-    @JoinTable(name = "topic_mapper",
-            joinColumns = {
-                    @JoinColumn(name = "artist_id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "topic_id")
-            }
-    )
-    private List<Topic>  topics;                  //关注的话题社
 
     private String topicColor;                       //主题色
+
+
     @OneToOne(fetch = FetchType.LAZY)
     private DecorateZone decorateZone;
 
@@ -144,37 +97,6 @@ public class Artist {
         this.icon = icon;
     }
 
-    public Set<PictureAlbum> getPictureAlbums() {
-        return pictureAlbums;
-    }
-
-    public void setPictureAlbums(Set<PictureAlbum> pictureAlbums) {
-        this.pictureAlbums = pictureAlbums;
-    }
-
-    public Set<RelationShip> getConcernedMan() {
-        return ConcernedMan;
-    }
-
-    public void setConcernedMan(Set<RelationShip> concernedMan) {
-        ConcernedMan = concernedMan;
-    }
-
-    public List<Artist> getHenchman() {
-        return henchman;
-    }
-
-    public void setHenchman(List<Artist> henchman) {
-        this.henchman = henchman;
-    }
-
-    public List<Topic> getTopics() {
-        return topics;
-    }
-
-    public void setTopics(List<Topic> topics) {
-        this.topics = topics;
-    }
 
     public String getTopicColor() {
         return topicColor;

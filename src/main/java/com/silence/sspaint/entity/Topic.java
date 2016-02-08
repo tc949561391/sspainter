@@ -31,19 +31,27 @@ public class Topic {
 
     private String tupicName;
 
-    @ManyToMany(mappedBy = "topics")
+    @ManyToMany
+    @JoinTable(name = "topic_mapper",
+            joinColumns = {
+                    @JoinColumn(name = "artist_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "topic_id")
+            }
+    )
     private List<Artist> members;
 
     @OneToOne
     private Artist creater;
 
     @ManyToMany
-    @JoinTable(name = "manager_mapper",
+    @JoinTable(name = "topic_mapper",
             joinColumns = {
                     @JoinColumn(name = "topic_id")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "artist_id")
+                    @JoinColumn(name = "manager_id")
             }
     )
     private List<Artist> managers;

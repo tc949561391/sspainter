@@ -13,21 +13,13 @@ public class Post {
     @Id
     @GenericGenerator(name="uuid",strategy = "uuid")
     @GeneratedValue(generator = "uuid")
+    @Column(length = 32,nullable = false)
     private String uuid;                  //主键id
 
     @ManyToOne
     private Topic topic;
     private String title;
     private String content;
-
-    @OneToMany(cascade = {
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST},
-            fetch = FetchType.LAZY, mappedBy = "post")
-    private Set<PostComment> comments;
-
 
     public String getUuid() {
         return uuid;
@@ -59,13 +51,5 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Set<PostComment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<PostComment> comments) {
-        this.comments = comments;
     }
 }

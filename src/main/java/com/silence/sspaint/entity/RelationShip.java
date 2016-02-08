@@ -23,10 +23,11 @@ public class RelationShip {
     private Artist related;
 
 
-    private String remark;
+    private String remark;    //备注
 
 
-    private String groupName;
+    private String groupName; //分组
+
 
 
     public String getUuid() {

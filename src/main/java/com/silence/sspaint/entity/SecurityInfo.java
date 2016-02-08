@@ -17,6 +17,9 @@ public class SecurityInfo {
     @GeneratedValue(generator = "uuid")
     private String uuid;                  //主键id
 
+    @OneToOne
+    private Artist artist;
+
 
     private String trueName;            //真实姓名
 

@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -25,8 +26,7 @@ public class Picture {
     @ManyToOne(fetch = FetchType.EAGER)
     private PictureAlbum  album;
 
-    @Transient
-    private File file;
+
 
 
     @ManyToMany
@@ -40,6 +40,18 @@ public class Picture {
     )
 
     private Set<Style> styles;
+
+
+
+    public Date createDate;    //上传时间
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     @OneToMany(cascade = {
             CascadeType.REFRESH,
@@ -90,13 +102,6 @@ public class Picture {
         this.album = album;
     }
 
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
 
     public Set<Style> getStyles() {
         return styles;

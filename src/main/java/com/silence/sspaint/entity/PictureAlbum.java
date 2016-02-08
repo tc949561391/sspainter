@@ -14,10 +14,13 @@ import java.util.Set;
 @Entity
 public class PictureAlbum {
     @Id
-    @GenericGenerator(name="uuid",strategy = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
     @GeneratedValue(generator = "uuid")
+    @Column(length = 32,nullable = false)
     private String uuid;                  //主键id
 
+    @OneToOne
+    private Picture backGround;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -35,14 +38,8 @@ public class PictureAlbum {
     private Set<Picture> pictures;
 
 
+    private boolean isPublic;       //是不是公共可访问的
 
-    @OneToMany(cascade = {
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST},
-            fetch = FetchType.LAZY, mappedBy = "album")
-    private Set<PictureComment> comments;
 
     public String getUuid() {
         return uuid;
@@ -76,11 +73,19 @@ public class PictureAlbum {
         this.pictures = pictures;
     }
 
-    public Set<PictureComment> getComments() {
-        return comments;
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
     }
 
-    public void setComments(Set<PictureComment> comments) {
-        this.comments = comments;
+    public boolean isPublic() {
+        return isPublic;
     }
+
+    public Picture getBackGround() {
+        return backGround;
+    }
+
+    public void setBackGround(Picture backGround) {
+        this.backGround = backGround;}
 }
