@@ -45,33 +45,6 @@ public class RepostioryTest {
     private StyleRepository styleRepository;
 
 
-
-    @Test
-    public void testPicture(){
-
-
-
-
-        Picture picture=new Picture();
-        picture.setPath("sssss");
-        picture.setTitle("title2");
-        Style style=new Style();
-        style.setStyleName("古风1");
-        style.setRoot(false);
-        Set<Style> styles=new HashSet<Style>();
-        styles.add(style);
-        picture.setStyles(styles);
-
-
-        styleRepository.save(style);
-        pictureReponsitory.save(picture);
-
-
-//        Page<Picture> pictures = pictureReponsitory.findByStyles_StyleNameIn(new PageRequest(1, 10), "asd", "22we");
-
-
-    }
-
     @Test
     @Transactional
     public void testArtist() {
