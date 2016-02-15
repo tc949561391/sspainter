@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven validator="validatorFactoryBean"/>
+    <!-- 静态资源不进行映射 -->
+    <default-servlet-handler/>
+    <!-- jsp的视图解析器 -->
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/"/>
+        <beans:property name="suffix" value=".jsp"/>
+    </beans:bean>
+
+    <beans:bean id="validatorFactoryBean" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
+        <beans:property name="providerClass" value="org.hibernate.validator.HibernateValidator"></beans:property>
+        <beans:property name="validationMessageSource" ref="messageSource"></beans:property>
+    </beans:bean>
+    <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="basenames">
+            <beans:list>
+                <!-- 在web环境中一定要定位到classpath 否则默认到当前web应用下找  -->
+            </beans:list>
+        </beans:property>
+        <beans:property name="useCodeAsDefaultMessage" value="false"/>
+        <beans:property name="defaultEncoding" value="UTF-8"/>
+        <beans:property name="cacheSeconds" value="60"/>
+    </beans:bean>
+
+    <!--控制器的所在位置-->
+    <context:component-scan base-package="com.silence.sspaint.controller">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"></context:include-filter>
+    </context:component-scan>
+
+    <view-controller path="register" view-name="register" status-code="200"/>
+    <view-controller path="login" view-name="login" status-code="200"/>
+
+</beans:beans>

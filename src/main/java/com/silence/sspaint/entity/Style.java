@@ -34,9 +34,6 @@ public class Style {
             fetch = FetchType.LAZY, mappedBy = "parentStyle")
     private Set<Style> subStyle;
 
-
-
-
     private boolean isRoot=false;            //是不是根级别的style,如果是根级别的style,则用户不可以更改其类型
 
 

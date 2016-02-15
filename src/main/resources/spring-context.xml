@@ -46,9 +46,13 @@
                 <!--sql语句格式化-->
                 <prop key="hibernate.format_sql">true</prop>
                 <!--数据库表的生成策略-->
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
+    </bean>
+
+    <bean  id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
     </bean>
 
 
@@ -70,6 +74,10 @@
     <context:component-scan base-package="com.silence.sspaint.service">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Service"></context:include-filter>
+    </context:component-scan>
+    <context:component-scan base-package="com.silence.sspaint.restentity" >
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Component"></context:include-filter>
     </context:component-scan>
 
 </beans>

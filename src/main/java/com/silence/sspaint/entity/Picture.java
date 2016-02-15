@@ -1,10 +1,15 @@
 package com.silence.sspaint.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyToOne;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -29,7 +34,8 @@ public class Picture {
 
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
     @JoinTable(name = "picture_style_mapper",
             joinColumns = {
                     @JoinColumn(name = "style_id")
@@ -37,13 +43,26 @@ public class Picture {
             inverseJoinColumns = {
                     @JoinColumn(name = "picture_id")
             }
-    )
 
-    private Set<Style> styles;
+    )
+    private List<Style> styles;
 
 
 
     public Date createDate;    //上传时间
+
+
+    @OneToMany(cascade = {
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.REMOVE,
+            CascadeType.PERSIST},
+            mappedBy = "picture",
+            fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    private List<PictureComment> comments;
+
+
 
     public Date getCreateDate() {
         return createDate;
@@ -52,14 +71,6 @@ public class Picture {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-
-    @OneToMany(cascade = {
-            CascadeType.REFRESH,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST},
-            fetch = FetchType.LAZY, mappedBy = "picture")
-    private Set<PictureComment> comments;
 
 
     public String getUuid() {
@@ -102,20 +113,19 @@ public class Picture {
         this.album = album;
     }
 
-
-    public Set<Style> getStyles() {
+    public List<Style> getStyles() {
         return styles;
     }
 
-    public void setStyles(Set<Style> styles) {
+    public void setStyles(List<Style> styles) {
         this.styles = styles;
     }
 
-    public Set<PictureComment> getComments() {
+    public List<PictureComment> getComments() {
         return comments;
     }
 
-    public void setComments(Set<PictureComment> comments) {
+    public void setComments(List<PictureComment> comments) {
         this.comments = comments;
     }
 }

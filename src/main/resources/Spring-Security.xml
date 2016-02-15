@@ -4,13 +4,9 @@
              xmlns="http://www.springframework.org/schema/security"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 <authentication-manager>
-    <authentication-provider>
-        <user-service>
-            <user authorities="USER_" name="tristan" password="tristan"></user>
-        </user-service>
-    </authentication-provider>
+    <authentication-provider user-service-ref="artistDetailsService"/>
 </authentication-manager>
     <http auto-config="true">
-        <intercept-url pattern="/**" access="hasAnyAuthority('USER_')" ></intercept-url>
+        <intercept-url pattern="/home" access="hasRole('USER')" ></intercept-url>
     </http>
 </beans:beans>

@@ -1,29 +1,20 @@
 package com.sspainter.test;
 
 
-import com.silence.sspaint.entity.Artist;
-import com.silence.sspaint.entity.Picture;
 import com.silence.sspaint.entity.Style;
-import com.silence.sspaint.exception.ArtistException;
 import com.silence.sspaint.repostiory.ArtistReponsitory;
 import com.silence.sspaint.repostiory.PictureReponsitory;
 import com.silence.sspaint.repostiory.StyleRepository;
-import com.silence.sspaint.service.ArtistService;
+import com.silence.sspaint.service.inter.ArtistService;
+import com.silence.sspaint.service.inter.StyleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import sun.security.validator.Validator;
-
-import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by tristan on 16/1/12.
@@ -33,36 +24,49 @@ import java.util.Set;
 public class RepostioryTest {
     @Autowired
     private ArtistReponsitory artistReponsitory;
-
     @Autowired
     private ArtistService artistService;
-
     @Autowired
     private PictureReponsitory pictureReponsitory;
-
-
     @Autowired
     private StyleRepository styleRepository;
+    @Autowired
+    StyleService styleService;
 
 
     @Test
-    @Transactional
     public void testArtist() {
-        Artist artist=new Artist();
-        artist.setLoginId("tc1");
-        artist.setPassword("love201314");
-        Artist info = null;
 
-        try {
-            info = artistService.reisterArtist(artist);
-            System.out.println(info.getLoginId()+info.getUuid());
-        } catch (ArtistException e) {
-            System.out.println(e.getMessage());
-        }
 
+//        Page<Style> styles = styleRepository.findByParentStyle_UuidOrderByStyleName("ff80808152d4e5b60152d4e5ce8c0000",new PageRequest(0,10));
+
+        Page<Style> stylePage=styleService.loadSubStyls("ff80808152d4e5b60152d4e5ce8c0000",new PageRequest(0,10));
+
+        stylePage.forEach(p->{
+            System.out.println(p.getStyleName());
+        });
+    }
+
+
+
+
+  @Transactional
+    public void addStyle(){
+        Style style = styleRepository.findOne("ff80808152d4e5b60152d4e5ce8c0000");
+        Style style1=new Style();
+        style1.setStyleName("古装");
+        style1.setRoot(false);
+
+        style1.setParentStyle(style);
+      styleRepository.save(style1);
 
 
     }
+
+
+
+
+
 
 
 }

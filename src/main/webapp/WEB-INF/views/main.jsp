@@ -13,6 +13,5 @@
 <a href="${pageContext.request.contextPath}/login">login</a>
 <a href="${pageContext.request.contextPath}/register">register</a>
 
-哦那个
 </body>
 </html>

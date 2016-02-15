@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -13,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Created by tristan on 16/1/25.
  */
-@Controller
+@RestController
 @RequestMapping("/")
 public class NavigationController {
     @RequestMapping("/")
@@ -26,8 +27,11 @@ public class NavigationController {
         return view;
     }
 @RequestMapping("dologin")
-    public ModelAndView doLogin(String loginId, String password) {
-        return new ModelAndView("redirect:/");
+    public Artist doLogin(String loginId, String password) {
+    Artist artist=new Artist();
+    artist.setNickName("asdasd");
+    artist.setUserName("asdasdasd");
+    return  artist;
     }
 
 
